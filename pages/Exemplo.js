@@ -5,8 +5,8 @@ import { styles } from '../styles';
 const categories = [
   { title: 'Rock', subtitle: 'Guitarras, bandas e movimentos', icon: '♬', color: '#E9D9FF', term: 'rock' },
   { title: 'Pop', subtitle: 'Hits, tendências e cultura pop', icon: '✦', color: '#FFE2D6', term: 'pop' },
-  { title: 'MPB', subtitle: 'A música popular brasileira', icon: '♫', color: '#D9EBDD', term: 'mpb' },
-  { title: 'Eletrônica', subtitle: 'Sons, sintetizadores e pistas', icon: '◉', color: '#DCE8FF', term: 'eletrônica' },
+  { title: 'Rock brasileiro', subtitle: 'Bandas e canções do Brasil', icon: '♫', color: '#D9EBDD', term: 'rock brasileiro' },
+  { title: 'Psicodélico', subtitle: 'Texturas, experimentação e sons', icon: '◉', color: '#DCE8FF', term: 'psychedelic' },
 ];
 
 export default function Explore({ songs, onOpenSong, onSearch }) {
