@@ -1,116 +1,52 @@
-
 import React from 'react';
 import { View, Text, Pressable, ScrollView } from 'react-native';
 import { styles } from '../styles';
 
-const categorias = [
-  {
-    nome: 'Tecnologia',
-    descricao: 'Inovação, inteligência artificial e tecnologia.',
-    termo: 'tecnologia',
-    icone: '💻',
-  },
-  {
-    nome: 'Ciência',
-    descricao: 'Descobertas, pesquisas e meio ambiente.',
-    termo: 'ciência',
-    icone: '🔬',
-  },
-  {
-    nome: 'Esportes',
-    descricao: 'Competições, clubes e notícias esportivas.',
-    termo: 'esportes',
-    icone: '⚽',
-  },
-  {
-    nome: 'Entretenimento',
-    descricao: 'Cinema, televisão e cultura.',
-    termo: 'entretenimento',
-    icone: '🎬',
-  },
-  {
-    nome: 'Economia',
-    descricao: 'Mercado, empresas e economia.',
-    termo: 'economia',
-    icone: '📊',
-  },
+const categories = [
+  { title: 'Rock', subtitle: 'Guitarras, bandas e movimentos', icon: '♬', color: '#E9D9FF', term: 'rock' },
+  { title: 'Pop', subtitle: 'Hits, tendências e cultura pop', icon: '✦', color: '#FFE2D6', term: 'pop' },
+  { title: 'MPB', subtitle: 'A música popular brasileira', icon: '♫', color: '#D9EBDD', term: 'mpb' },
+  { title: 'Eletrônica', subtitle: 'Sons, sintetizadores e pistas', icon: '◉', color: '#DCE8FF', term: 'eletrônica' },
 ];
 
-export default function Exemplo({
-  navegar,
-  setPesquisa,
-  setErro,
-}) {
-  function escolherCategoria(termo) {
-    setPesquisa(termo);
-    setErro('');
-    navegar('home');
-  }
-
+export default function Explore({ songs, onOpenSong, onSearch }) {
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
-      <Text style={styles.etiqueta}>ÁREA DE DESCOBERTA</Text>
+    <ScrollView contentContainerStyle={styles.page} showsVerticalScrollIndicator={false}>
+      <Text style={styles.eyebrow}>DESCUBRA ALGO NOVO</Text>
+      <Text style={styles.pageTitle}>Explore</Text>
+      <Text style={styles.pageIntro}>Entre por um gênero, encontre um artista ou siga uma descoberta.</Text>
 
-      <Text style={styles.titulo}>Explorar notícias</Text>
-
-      <Text style={styles.subtitulo}>
-        Escolha uma categoria para começar sua pesquisa.
-      </Text>
-
-      <View style={styles.ilustracao}>
-        <Text style={styles.ilustracaoIcone}>✦</Text>
-        <Text style={styles.ilustracaoTitulo}>
-          Informação sobre todos os assuntos.
-        </Text>
-        <Text style={styles.ilustracaoTexto}>
-          Selecione um tema. Depois, processe a pesquisa
-          na página inicial para encontrar notícias.
-        </Text>
+      <Text style={styles.sectionTitle}>Gêneros musicais</Text>
+      <View style={styles.categoryGrid}>
+        {categories.map((category) => (
+          <Pressable key={category.term} onPress={() => onSearch(category.term)} style={({ pressed }) => [styles.categoryCard, { backgroundColor: category.color }, pressed && styles.pressed]}>
+            <Text style={styles.categoryIcon}>{category.icon}</Text>
+            <Text style={styles.categoryTitle}>{category.title}</Text>
+            <Text style={styles.categorySubtitle}>{category.subtitle}</Text>
+          </Pressable>
+        ))}
       </View>
 
-      <Text style={styles.secaoTitulo}>
-        Categorias disponíveis
-      </Text>
-
-      {categorias.map((categoria) => (
-        <Pressable
-          key={categoria.termo}
-          onPress={() => escolherCategoria(categoria.termo)}
-          style={({ pressed }) => [
-            styles.cartao,
-            pressed && { opacity: 0.7 },
-          ]}
-        >
-          <View style={styles.iconeCartao}>
-            <Text style={styles.iconeCartaoTexto}>
-              {categoria.icone}
-            </Text>
+      <View style={styles.sectionHeader}>
+        <Text style={styles.sectionTitle}>Descobertas para começar</Text>
+        <Text style={styles.resultCount}>{songs.length} artigos</Text>
+      </View>
+      {songs.map((song) => (
+        <Pressable key={song.id} onPress={() => onOpenSong(song)} style={({ pressed }) => [styles.songCard, pressed && styles.pressed]}>
+          <View style={[styles.cover, { backgroundColor: song.color }]}><Text style={styles.coverMark}>♫</Text></View>
+          <View style={styles.songInfo}>
+            <Text style={styles.songTitle}>{song.title}</Text>
+            <Text style={styles.songArtist}>{song.artist}</Text>
+            <Text style={styles.songMeta}>{song.year} · {song.genre}</Text>
           </View>
-
-          <View style={styles.cartaoConteudo}>
-            <Text style={styles.cartaoTitulo}>
-              {categoria.nome}
-            </Text>
-            <Text style={styles.cartaoTexto}>
-              {categoria.descricao}
-            </Text>
-          </View>
-
-          <Text style={styles.seta}>›</Text>
+          <Text style={styles.chevron}>›</Text>
         </Pressable>
       ))}
-
-      <Pressable
-        onPress={() => navegar('home')}
-        style={styles.botaoPrincipal}
-      >
-        <Text style={styles.botaoPrincipalTexto}>
-          ← Voltar para pesquisar
-        </Text>
-      </Pressable>
+      <View style={styles.editorialBox}>
+        <Text style={styles.sectionKicker}>PARTICIPE</Text>
+        <Text style={styles.editorialTitle}>Sabe algo que ainda não está aqui?</Text>
+        <Text style={styles.editorialText}>O conhecimento cresce quando é compartilhado. Abra um artigo e ajude a melhorá-lo.</Text>
+      </View>
     </ScrollView>
   );
 }
