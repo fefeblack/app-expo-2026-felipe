@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, ScrollView, TextInput } from 'react-native';
+import { Text, Pressable, ScrollView, TextInput } from 'react-native';
 import { styles } from '../styles';
 
 const sections = ['História da música', 'Significado e interpretação', 'Gravação e produção', 'Curiosidades', 'Fontes e referências', 'Correção de informação'];
@@ -7,11 +7,9 @@ const sections = ['História da música', 'Significado e interpretação', 'Grav
 export default function Contribute({ song, value, onChange, onBack, onSubmit }) {
   const [section, setSection] = useState(sections[0]);
   const [source, setSource] = useState('');
-  const [sent, setSent] = useState(false);
 
   function submitDraft() {
     if (!value.trim()) return;
-    setSent(true);
     onSubmit();
   }
 
@@ -37,7 +35,7 @@ export default function Contribute({ song, value, onChange, onBack, onSubmit }) 
       <Text style={styles.fieldLabel}>Sua contribuição</Text>
       <TextInput
         value={value}
-        onChangeText={(text) => { onChange(text); setSent(false); }}
+        onChangeText={onChange}
         multiline
         textAlignVertical="top"
         placeholder="Escreva informações claras e verificáveis. Explique de onde veio o conhecimento..."
