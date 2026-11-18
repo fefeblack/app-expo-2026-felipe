@@ -1,147 +1,88 @@
-
 import React from 'react';
-import {
-  View,
-  Text,
-  Pressable,
-  ScrollView,
-  TextInput,
-  ActivityIndicator,
-} from 'react-native';
+import { View, Text, Pressable, ScrollView, TextInput } from 'react-native';
 import { styles } from '../styles';
 
-export default function Home({
-  navegar,
-  pesquisa,
-  setPesquisa,
-  carregando,
-  erro,
-  setErro,
-  processarNoticias,
-}) {
+function SongCard({ song, onPress }) {
   return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
-      <View style={styles.topo}>
+    <Pressable onPress={onPress} style={({ pressed }) => [styles.songCard, pressed && styles.pressed]}>
+      <View style={[styles.cover, { backgroundColor: song.color }]}>
+        <Text style={styles.coverMark}>♫</Text>
+      </View>
+      <View style={styles.songInfo}>
+        <Text style={styles.songTitle} numberOfLines={1}>{song.title}</Text>
+        <Text style={styles.songArtist} numberOfLines={1}>{song.artist}</Text>
+        <Text style={styles.songMeta}>{song.year}  ·  {song.genre}</Text>
+      </View>
+      <Text style={styles.chevron}>›</Text>
+    </Pressable>
+  );
+}
+
+export default function Home({ query, setQuery, songs, onOpenSong, onExplore }) {
+  return (
+    <ScrollView contentContainerStyle={styles.page} showsVerticalScrollIndicator={false}>
+      <View style={styles.header}>
         <View>
-          <Text style={styles.etiqueta}>NEWSFLOW</Text>
-          <Text style={styles.titulo}>Notícias em foco.</Text>
-          <Text style={styles.subtitulo}>
-            Informação ao seu alcance.
-          </Text>
+          <Text style={styles.brand}>SONORA<Text style={styles.brandDot}>.</Text></Text>
+          <Text style={styles.eyebrow}>ENCICLOPÉDIA MUSICAL COLABORATIVA</Text>
         </View>
-
-        <View style={styles.avatar}>
-          <Text style={styles.avatarTexto}>N</Text>
-        </View>
+        <View style={styles.profileMark}><Text style={styles.profileMarkText}>S</Text></View>
       </View>
 
-      <View style={styles.banner}>
-        <Text style={styles.bannerEtiqueta}>
-          PESQUISE E DESCUBRA
-        </Text>
+      <Text style={styles.heroTitle}>Toda música{ '\n' }tem uma história.</Text>
+      <Text style={styles.heroText}>Descubra os bastidores, conheça os artistas e compartilhe o que você sabe.</Text>
 
-        <Text style={styles.bannerTitulo}>
-          O que está acontecendo no mundo?
-        </Text>
-
-        <Text style={styles.bannerTexto}>
-          Escolha um assunto e processe as notícias
-          para encontrar matérias relacionadas.
-        </Text>
-
+      <View style={styles.searchBox}>
+        <Text style={styles.searchIcon}>⌕</Text>
         <TextInput
-          value={pesquisa}
-          onChangeText={(texto) => {
-            setPesquisa(texto);
-            setErro('');
-          }}
-          placeholder="Ex.: tecnologia, ciência..."
-          placeholderTextColor="#777777"
+          value={query}
+          onChangeText={setQuery}
+          placeholder="Busque músicas, artistas ou álbuns"
+          placeholderTextColor="#8B8D91"
+          style={styles.searchInput}
           returnKeyType="search"
-          onSubmitEditing={() => processarNoticias()}
-          style={{
-            backgroundColor: '#FFFFFF',
-            color: '#222222',
-            padding: 13,
-            borderRadius: 10,
-            marginTop: 16,
-            marginBottom: 10,
-          }}
+          accessibilityLabel="Buscar músicas, artistas ou álbuns"
         />
-
-        <Pressable
-          disabled={carregando}
-          onPress={() => processarNoticias()}
-          style={({ pressed }) => [
-            styles.botaoBanner,
-            pressed && { opacity: 0.8 },
-            carregando && { opacity: 0.6 },
-          ]}
-        >
-          <Text style={styles.botaoBannerTexto}>
-            {carregando
-              ? 'Processando...'
-              : 'Processar notícias →'}
-          </Text>
-        </Pressable>
-
-        {carregando && (
-          <ActivityIndicator
-            color="#FFFFFF"
-            style={{ marginTop: 12 }}
-          />
+        {query.length > 0 && (
+          <Pressable onPress={() => setQuery('')}><Text style={styles.clearSearch}>×</Text></Pressable>
         )}
-
-        {!!erro && (
-          <Text
-            style={{
-              color: '#FFFFFF',
-              marginTop: 12,
-              fontWeight: '600',
-            }}
-          >
-            {erro}
-          </Text>
-        )}
-
-        <Text style={styles.bannerDecoracao}>✦</Text>
       </View>
 
-      <Text style={styles.secaoTitulo}>
-        Explore o NewsFlow
-      </Text>
+      <View style={styles.sectionHeader}>
+        <View><Text style={styles.sectionKicker}>PONTO DE PARTIDA</Text><Text style={styles.sectionTitle}>Explore o universo musical</Text></View>
+        <Pressable onPress={onExplore}><Text style={styles.textLink}>Ver tudo ↗</Text></Pressable>
+      </View>
 
-      <Pressable
-        onPress={() => navegar('exemplo')}
-        style={styles.cartao}
-      >
-        <View style={styles.iconeCartao}>
-          <Text style={styles.iconeCartaoTexto}>✦</Text>
-        </View>
-
-        <View style={styles.cartaoConteudo}>
-          <Text style={styles.cartaoTitulo}>
-            Explorar categorias
-          </Text>
-          <Text style={styles.cartaoTexto}>
-            Descubra assuntos para pesquisar.
-          </Text>
-        </View>
-
-        <Text style={styles.seta}>›</Text>
+      <Pressable onPress={onExplore} style={styles.featureCard}>
+        <View style={styles.featureOrb}><Text style={styles.featureOrbText}>♫</Text></View>
+        <Text style={styles.featureKicker}>CONHECIMENTO EM MOVIMENTO</Text>
+        <Text style={styles.featureTitle}>Uma comunidade{ '\n' }que entende de música.</Text>
+        <Text style={styles.featureDescription}>Leia, descubra e ajude a construir histórias musicais.</Text>
+        <Text style={styles.featureAction}>Começar a explorar  →</Text>
       </Pressable>
 
-      <Pressable
-        onPress={() => navegar('final')}
-        style={styles.botaoSecundario}
-      >
-        <Text style={styles.botaoSecundarioTexto}>
-          Ver últimos resultados →
-        </Text>
-      </Pressable>
+      <View style={styles.sectionHeader}>
+        <View><Text style={styles.sectionKicker}>BIBLIOTECA SONORA</Text><Text style={styles.sectionTitle}>{query ? 'Resultados da busca' : 'Músicas em destaque'}</Text></View>
+        <Text style={styles.resultCount}>{songs.length} {songs.length === 1 ? 'faixa' : 'faixas'}</Text>
+      </View>
+
+      {songs.length === 0 ? (
+        <View style={styles.emptyState}>
+          <Text style={styles.emptyIcon}>⌕</Text>
+          <Text style={styles.emptyTitle}>Não encontramos essa música</Text>
+          <Text style={styles.emptyText}>Tente buscar pelo nome do artista ou do álbum.</Text>
+        </View>
+      ) : songs.map((song) => (
+        <SongCard key={song.id} song={song} onPress={() => onOpenSong(song)} />
+      ))}
+
+      <View style={styles.communityNote}>
+        <Text style={styles.communityIcon}>✳</Text>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.communityTitle}>O SONORA é feito por pessoas.</Text>
+          <Text style={styles.communityText}>Enriqueça os artigos com informações, referências e novas perspectivas.</Text>
+        </View>
+      </View>
     </ScrollView>
   );
 }
