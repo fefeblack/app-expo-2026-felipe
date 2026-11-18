@@ -1,335 +1,103 @@
-
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  tela: {
-    flex: 1,
-    backgroundColor: '#F7F8FC',
-  },
-
-  conteudo: {
-    flex: 1,
-  },
-
-  container: {
-    flexGrow: 1,
-    paddingHorizontal: 22,
-    paddingTop: 38,
-    paddingBottom: 28,
-  },
-
-  topo: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 26,
-  },
-
-  etiqueta: {
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 2,
-    color: '#D62828',
-    marginBottom: 9,
-  },
-
-  titulo: {
-    fontSize: 32,
-    fontWeight: '800',
-    color: '#20243A',
-    marginBottom: 7,
-  },
-
-  subtitulo: {
-    fontSize: 15,
-    lineHeight: 23,
-    color: '#85899B',
-    marginBottom: 26,
-  },
-
-  avatar: {
-    width: 52,
-    height: 52,
-    borderRadius: 18,
-    backgroundColor: '#FCE5E4',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  avatarTexto: {
-    color: '#D62828',
-    fontSize: 23,
-    fontWeight: '800',
-  },
-
-  banner: {
-    backgroundColor: '#D62828',
-    borderRadius: 25,
-    padding: 23,
-    marginBottom: 30,
-    overflow: 'hidden',
-  },
-
-  bannerEtiqueta: {
-    color: '#FFD7A0',
-    fontSize: 11,
-    fontWeight: '800',
-    letterSpacing: 2,
-    marginBottom: 12,
-  },
-
-  bannerTitulo: {
-    color: '#FFFFFF',
-    fontSize: 27,
-    fontWeight: '800',
-    lineHeight: 34,
-    maxWidth: '90%',
-    marginBottom: 10,
-  },
-
-  bannerTexto: {
-    color: '#FFE9E7',
-    fontSize: 14,
-    lineHeight: 22,
-    marginBottom: 22,
-    maxWidth: '95%',
-  },
-
-  bannerDecoracao: {
-    position: 'absolute',
-    right: 12,
-    top: 35,
-    color: '#FFFFFF',
-    opacity: 0.12,
-    fontSize: 95,
-  },
-
-  botaoBanner: {
-    backgroundColor: '#FFC857',
-    borderRadius: 13,
-    paddingVertical: 15,
-    paddingHorizontal: 17,
-    alignSelf: 'flex-start',
-  },
-
-  botaoBannerTexto: {
-    color: '#542020',
-    fontSize: 14,
-    fontWeight: '800',
-  },
-
-  secaoTitulo: {
-    fontSize: 19,
-    fontWeight: '800',
-    color: '#20243A',
-    marginBottom: 16,
-  },
-
-  cartao: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 19,
-    padding: 16,
-    marginBottom: 13,
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#EFF0F5',
-  },
-
-  iconeCartao: {
-    width: 47,
-    height: 47,
-    borderRadius: 15,
-    backgroundColor: '#FCE8E7',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 14,
-  },
-
-  iconeAmarelo: {
-    backgroundColor: '#FFF1C9',
-  },
-
-  iconeCartaoTexto: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: '#D62828',
-  },
-
-  cartaoConteudo: {
-    flex: 1,
-  },
-
-  cartaoTitulo: {
-    fontSize: 15,
-    fontWeight: '800',
-    color: '#292D40',
-    marginBottom: 5,
-  },
-
-  cartaoTexto: {
-    fontSize: 13,
-    lineHeight: 19,
-    color: '#85899B',
-  },
-
-  seta: {
-    color: '#D62828',
-    fontSize: 27,
-    marginLeft: 8,
-  },
-
-  botaoPrincipal: {
-    backgroundColor: '#D62828',
-    paddingVertical: 17,
-    paddingHorizontal: 18,
-    borderRadius: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 12,
-    marginBottom: 12,
-  },
-
-  botaoPrincipalTexto: {
-    color: '#FFFFFF',
-    fontSize: 15,
-    fontWeight: '800',
-  },
-
-  botaoSecundario: {
-    backgroundColor: '#FFFFFF',
-    paddingVertical: 16,
-    paddingHorizontal: 18,
-    borderRadius: 15,
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#F0D8D8',
-    marginTop: 5,
-    marginBottom: 10,
-  },
-
-  botaoSecundarioTexto: {
-    color: '#D62828',
-    fontSize: 14,
-    fontWeight: '700',
-  },
-
-  ilustracao: {
-    backgroundColor: '#FFF0D0',
-    borderRadius: 23,
-    padding: 24,
-    alignItems: 'flex-start',
-    marginBottom: 30,
-  },
-
-  ilustracaoIcone: {
-    fontSize: 39,
-    color: '#D62828',
-    marginBottom: 14,
-  },
-
-  ilustracaoTitulo: {
-    color: '#292D40',
-    fontSize: 23,
-    lineHeight: 30,
-    fontWeight: '800',
-    marginBottom: 10,
-  },
-
-  ilustracaoTexto: {
-    color: '#71685C',
-    fontSize: 14,
-    lineHeight: 22,
-  },
-
-  finalIcone: {
-    width: 90,
-    height: 90,
-    borderRadius: 30,
-    backgroundColor: '#FFF0C8',
-    alignItems: 'center',
-    justifyContent: 'center',
-    alignSelf: 'center',
-    marginTop: 30,
-    marginBottom: 25,
-  },
-
-  finalIconeTexto: {
-    color: '#D62828',
-    fontSize: 48,
-    fontWeight: '800',
-  },
-
-  bannerFinal: {
-    backgroundColor: '#FFFFFF',
-    padding: 22,
-    borderRadius: 21,
-    borderWidth: 1,
-    borderColor: '#F0D8D8',
-    marginBottom: 23,
-  },
-
-  bannerFinalTitulo: {
-    color: '#D62828',
-    fontSize: 21,
-    fontWeight: '800',
-    marginBottom: 12,
-  },
-
-  bannerFinalTexto: {
-    color: '#777D90',
-    fontSize: 15,
-    lineHeight: 24,
-  },
-
-  rodape: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderTopWidth: 1,
-    borderTopColor: '#ECEEF4',
-    paddingHorizontal: 12,
-    paddingTop: 9,
-    paddingBottom: 10,
-    minHeight: 78,
-  },
-
-  itemMenu: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 7,
-    borderRadius: 15,
-    position: 'relative',
-  },
-
-  itemMenuAtivo: {
-    backgroundColor: '#FFF3F2',
-  },
-
-  iconeMenu: {
-    fontSize: 24,
-    color: '#A2A5B3',
-    marginBottom: 3,
-  },
-
-  textoMenu: {
-    fontSize: 11,
-    fontWeight: '600',
-    color: '#9296A5',
-  },
-
-  textoAtivo: {
-    color: '#D62828',
-    fontWeight: '800',
-  },
-
-  indicador: {
-    position: 'absolute',
-    bottom: -9,
-    width: 22,
-    height: 3,
-    borderRadius: 5,
-    backgroundColor: '#FFC857',
-  },
+  app: { flex: 1, backgroundColor: '#F7F7F2' },
+  content: { flex: 1 },
+  page: { paddingHorizontal: 22, paddingTop: 24, paddingBottom: 34 },
+  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 30 },
+  brand: { color: '#20221F', fontSize: 27, fontWeight: '900', letterSpacing: 1.5 },
+  brandDot: { color: '#B4D34D' },
+  eyebrow: { color: '#74786F', fontSize: 9, fontWeight: '800', letterSpacing: 1.6, marginTop: 5, marginBottom: 12 },
+  profileMark: { width: 44, height: 44, borderRadius: 16, backgroundColor: '#E6EBD9', alignItems: 'center', justifyContent: 'center' },
+  profileMarkText: { color: '#53652C', fontWeight: '900', fontSize: 18 },
+  heroTitle: { color: '#20221F', fontSize: 39, lineHeight: 43, fontWeight: '900', letterSpacing: -1.4, marginBottom: 12 },
+  heroText: { color: '#74786F', fontSize: 14, lineHeight: 22, maxWidth: 310, marginBottom: 23 },
+  searchBox: { height: 55, borderRadius: 17, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E9EAE2', flexDirection: 'row', alignItems: 'center', paddingHorizontal: 15, marginBottom: 31 },
+  searchIcon: { color: '#74786F', fontSize: 27, marginRight: 10 },
+  searchInput: { flex: 1, color: '#252721', fontSize: 13, paddingVertical: 10 },
+  clearSearch: { color: '#777A72', fontSize: 24, paddingLeft: 8 },
+  sectionHeader: { flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 15, marginTop: 4 },
+  sectionKicker: { color: '#8A8E83', fontSize: 9, fontWeight: '800', letterSpacing: 1.5, marginBottom: 5 },
+  sectionTitle: { color: '#242720', fontSize: 19, fontWeight: '800', letterSpacing: -0.4 },
+  textLink: { color: '#697E34', fontSize: 12, fontWeight: '800', paddingBottom: 2 },
+  resultCount: { color: '#85887F', fontSize: 11, paddingBottom: 3 },
+  featureCard: { backgroundColor: '#262B22', borderRadius: 24, padding: 22, marginBottom: 30, overflow: 'hidden' },
+  featureOrb: { position: 'absolute', right: 18, top: 18, width: 88, height: 88, borderRadius: 44, backgroundColor: '#3B4530', alignItems: 'center', justifyContent: 'center' },
+  featureOrbText: { color: '#C7E66B', fontSize: 47, fontWeight: '700' },
+  featureKicker: { color: '#C7E66B', fontSize: 9, fontWeight: '900', letterSpacing: 1.6, marginBottom: 14 },
+  featureTitle: { color: '#FFFFFF', fontSize: 25, lineHeight: 29, fontWeight: '900', marginBottom: 9 },
+  featureDescription: { color: '#C7CBBF', fontSize: 12, lineHeight: 19, maxWidth: 240, marginBottom: 18 },
+  featureAction: { color: '#D2ED83', fontSize: 12, fontWeight: '800' },
+  songCard: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderRadius: 17, borderWidth: 1, borderColor: '#EBECE5', padding: 11, marginBottom: 10 },
+  pressed: { opacity: 0.72 },
+  cover: { width: 57, height: 57, borderRadius: 13, alignItems: 'center', justifyContent: 'center', marginRight: 13 },
+  coverMark: { color: '#33362D', fontSize: 27, fontWeight: '700' },
+  songInfo: { flex: 1 },
+  songTitle: { color: '#252720', fontSize: 14, fontWeight: '800', marginBottom: 3 },
+  songArtist: { color: '#676B61', fontSize: 12, marginBottom: 4 },
+  songMeta: { color: '#92958B', fontSize: 10 },
+  chevron: { color: '#92958B', fontSize: 27, marginLeft: 8 },
+  emptyState: { backgroundColor: '#FFFFFF', borderRadius: 18, padding: 25, alignItems: 'center', marginBottom: 15 },
+  emptyIcon: { color: '#89975E', fontSize: 36, marginBottom: 8 },
+  emptyTitle: { color: '#282B23', fontSize: 15, fontWeight: '800', marginBottom: 5 },
+  emptyText: { color: '#777B71', fontSize: 12, textAlign: 'center' },
+  communityNote: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#EDF1E3', borderRadius: 18, padding: 16, marginTop: 19 },
+  communityIcon: { color: '#71863B', fontSize: 26, marginRight: 13 },
+  communityTitle: { color: '#3C472B', fontSize: 12, fontWeight: '800', marginBottom: 4 },
+  communityText: { color: '#69725B', fontSize: 11, lineHeight: 17 },
+  pageTitle: { color: '#22251F', fontSize: 34, lineHeight: 39, fontWeight: '900', letterSpacing: -1, marginBottom: 9 },
+  pageIntro: { color: '#74786F', fontSize: 13, lineHeight: 21, marginBottom: 27 },
+  categoryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 25 },
+  categoryCard: { width: '48%', minHeight: 143, borderRadius: 19, padding: 15, marginBottom: 12, justifyContent: 'space-between' },
+  categoryIcon: { color: '#33362D', fontSize: 28, marginBottom: 10 },
+  categoryTitle: { color: '#282B24', fontSize: 17, fontWeight: '900', marginBottom: 4 },
+  categorySubtitle: { color: '#65695F', fontSize: 10, lineHeight: 15 },
+  editorialBox: { backgroundColor: '#262B22', borderRadius: 20, padding: 20, marginTop: 12 },
+  editorialTitle: { color: '#FFFFFF', fontSize: 21, fontWeight: '900', marginBottom: 8 },
+  editorialText: { color: '#C7CBBF', fontSize: 12, lineHeight: 19 },
+  backButton: { alignSelf: 'flex-start', paddingVertical: 9, marginBottom: 18 },
+  backButtonText: { color: '#667B36', fontSize: 12, fontWeight: '800' },
+  detailArtwork: { height: 205, borderRadius: 25, alignItems: 'center', justifyContent: 'center', marginBottom: 25 },
+  detailArtworkNote: { color: '#373A32', fontSize: 85, fontWeight: '800' },
+  detailArtworkLabel: { color: '#4B4E43', fontSize: 8, fontWeight: '900', letterSpacing: 2, position: 'absolute', bottom: 17 },
+  detailTitle: { color: '#22251F', fontSize: 32, lineHeight: 37, fontWeight: '900', letterSpacing: -0.8, marginBottom: 5 },
+  detailArtist: { color: '#666B60', fontSize: 16, marginBottom: 14 },
+  tagRow: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 24 },
+  tag: { color: '#596B31', backgroundColor: '#E8EDD9', borderRadius: 20, overflow: 'hidden', paddingHorizontal: 11, paddingVertical: 7, fontSize: 10, fontWeight: '800', marginRight: 7, marginBottom: 6 },
+  articleBox: { backgroundColor: '#FFFFFF', borderRadius: 18, borderWidth: 1, borderColor: '#EBECE5', padding: 18, marginBottom: 13 },
+  articleHeading: { color: '#272A23', fontSize: 16, fontWeight: '900', marginBottom: 9 },
+  articleText: { color: '#666B61', fontSize: 13, lineHeight: 21 },
+  placeholderLabel: { color: '#89965E', fontSize: 9, fontWeight: '900', letterSpacing: 1, marginTop: 14 },
+  factGrid: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 13 },
+  factCard: { width: '48%', backgroundColor: '#EDF1E3', borderRadius: 16, padding: 15 },
+  factLabel: { color: '#7D866A', fontSize: 8, fontWeight: '900', letterSpacing: 1, marginBottom: 7 },
+  factValue: { color: '#3C472B', fontSize: 14, fontWeight: '900' },
+  contributePanel: { backgroundColor: '#262B22', borderRadius: 20, padding: 19, marginTop: 8 },
+  contributePanelTitle: { color: '#FFFFFF', fontSize: 19, fontWeight: '900', marginBottom: 7 },
+  contributePanelText: { color: '#C7CBBF', fontSize: 12, lineHeight: 19, marginBottom: 17 },
+  primaryButton: { backgroundColor: '#C7E66B', borderRadius: 13, minHeight: 49, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 15, marginTop: 13 },
+  primaryButtonText: { color: '#2A3220', fontSize: 12, fontWeight: '900' },
+  disclaimer: { color: '#93968D', fontSize: 10, lineHeight: 16, marginTop: 18, marginBottom: 10 },
+  contributionTarget: { backgroundColor: '#E9EEDC', borderRadius: 17, padding: 17, marginBottom: 24 },
+  contributionTargetLabel: { color: '#7D8963', fontSize: 8, fontWeight: '900', letterSpacing: 1.3, marginBottom: 6 },
+  contributionTargetTitle: { color: '#303829', fontSize: 17, fontWeight: '900' },
+  contributionTargetArtist: { color: '#6C765C', fontSize: 12, marginTop: 3 },
+  fieldLabel: { color: '#30332B', fontSize: 12, fontWeight: '900', marginBottom: 10, marginTop: 7 },
+  sectionChoices: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 17 },
+  sectionChoice: { borderWidth: 1, borderColor: '#E2E4DA', borderRadius: 20, paddingHorizontal: 12, paddingVertical: 9, marginRight: 7, marginBottom: 8, backgroundColor: '#FFFFFF' },
+  sectionChoiceActive: { backgroundColor: '#E9EEDC', borderColor: '#A9BE6B' },
+  sectionChoiceText: { color: '#70756A', fontSize: 10, fontWeight: '700' },
+  sectionChoiceTextActive: { color: '#4D612B' },
+  contributionInput: { minHeight: 155, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E5E7DE', borderRadius: 15, padding: 14, color: '#292C25', fontSize: 12, lineHeight: 19 },
+  sourceInput: { minHeight: 48, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E5E7DE', borderRadius: 13, paddingHorizontal: 13, color: '#292C25', fontSize: 12 },
+  guidelineBox: { backgroundColor: '#EDF1E3', borderRadius: 15, padding: 15, marginTop: 18 },
+  guidelineTitle: { color: '#43512E', fontSize: 12, fontWeight: '900', marginBottom: 8 },
+  guidelineText: { color: '#68725B', fontSize: 10, lineHeight: 18 },
+  disabledButton: { opacity: 0.45 },
+  tabBar: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#E9EAE2', paddingHorizontal: 12, paddingTop: 8, paddingBottom: 9, minHeight: 68 },
+  tabItem: { flex: 1, alignItems: 'center', justifyContent: 'center', minHeight: 48 },
+  tabIcon: { color: '#85897F', fontSize: 20, fontWeight: '800', marginBottom: 2 },
+  tabLabel: { color: '#85897F', fontSize: 9, fontWeight: '700' },
+  tabActive: { color: '#6D8337' },
+  tabIndicator: { width: 15, height: 3, borderRadius: 2, backgroundColor: '#B4D34D', marginTop: 4 },
 });
