@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, ScrollView } from 'react-native';
+import { Alert, Text, TextInput, Pressable, ScrollView } from 'react-native';
 import { styles } from '../styles';
 
 export default function Login({ onBack }) {
@@ -21,7 +21,7 @@ export default function Login({ onBack }) {
       <Text style={styles.loginFieldLabel}>SENHA</Text>
       <TextInput value={password} onChangeText={setPassword} secureTextEntry placeholder="Mínimo de 8 caracteres" placeholderTextColor="#77777D" style={styles.loginInput} />
 
-      <Pressable disabled={!email.trim() || password.length < 8} style={[styles.primaryButton, (!email.trim() || password.length < 8) && styles.disabledButton]}>
+      <Pressable onPress={() => Alert.alert("SONORA", "A autenticação ainda será conectada ao Supabase.")} disabled={!email.trim() || password.length < 8} style={[styles.primaryButton, (!email.trim() || password.length < 8) && styles.disabledButton]}>
         <Text style={styles.primaryButtonText}>{isSignup ? 'CRIAR CONTA ↗' : 'ENTRAR ↗'}</Text>
       </Pressable>
       <Pressable onPress={() => setMode(isSignup ? 'login' : 'signup')}>
