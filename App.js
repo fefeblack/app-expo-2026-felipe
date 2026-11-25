@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Explore from './pages/Exemplo';
 import SongDetail from './pages/Final';
 import Contribute from './pages/Contribute';
+import Login from './pages/Login';
 import { songs } from './data/songs';
 import { styles } from './styles';
 
@@ -40,79 +41,46 @@ export default function App() {
 
   return (
     <GluestackUIProvider mode="light">
-      <StatusBar barStyle="dark-content" backgroundColor="#F7F7F2" />
+      <StatusBar barStyle="light-content" backgroundColor="#08090B" />
       <View style={styles.app}>
         <View style={styles.content}>
           {page === 'home' && (
-            <Home
-              query={query}
-              setQuery={setQuery}
-              songs={filteredSongs}
-              onOpenSong={openSong}
-              onExplore={() => setPage('explore')}
-            />
+            <Home query={query} setQuery={setQuery} songs={filteredSongs} onOpenSong={openSong} onExplore={() => setPage('explore')} onLogin={() => setPage('login')} />
           )}
           {page === 'explore' && (
-            <Explore
-              songs={songs}
-              onOpenSong={openSong}
-              onSearch={(term) => {
-                setQuery(term);
-                setPage('home');
-              }}
-            />
+            <Explore songs={songs} onOpenSong={openSong} onSearch={(term) => { setQuery(term); setPage('home'); }} />
           )}
           {page === 'song' && (
-            <SongDetail
-              song={selectedSong}
-              onBack={() => setPage('home')}
-              onContribute={() => openContribution(selectedSong)}
-            />
+            <SongDetail song={selectedSong} onBack={() => setPage('home')} onContribute={() => openContribution(selectedSong)} />
           )}
           {page === 'contribute' && (
-            <Contribute
-              song={selectedSong}
-              value={draftMessage}
-              onChange={setDraftMessage}
-              onBack={() => setPage('song')}
-              onSubmit={() => {
-                setDraftMessage('');
-                setPage('song');
-              }}
-            />
+            <Contribute song={selectedSong} value={draftMessage} onChange={setDraftMessage} onBack={() => setPage('song')} onSubmit={() => { setDraftMessage(''); setPage('song'); }} />
           )}
+          {page === 'login' && <Login onBack={() => setPage('home')} />}
         </View>
 
-        <View style={styles.tabBar}>
-          {[
-            { id: 'home', icon: '⌂', label: 'Início' },
-            { id: 'explore', icon: '◈', label: 'Explorar' },
-          ].map((item) => {
-            const active = page === item.id || (page === 'song' && item.id === 'home');
-            return (
-              <Pressable
-                key={item.id}
-                onPress={() => setPage(item.id)}
-                style={styles.tabItem}
-                accessibilityRole="button"
-                accessibilityState={{ selected: active }}
-              >
-                <Text style={[styles.tabIcon, active && styles.tabActive]}>{item.icon}</Text>
-                <Text style={[styles.tabLabel, active && styles.tabActive]}>{item.label}</Text>
-                {active && <View style={styles.tabIndicator} />}
-              </Pressable>
-            );
-          })}
-          <Pressable
-            onPress={() => openContribution(selectedSong)}
-            style={styles.tabItem}
-            accessibilityRole="button"
-          >
-            <Text style={[styles.tabIcon, page === 'contribute' && styles.tabActive]}>＋</Text>
-            <Text style={[styles.tabLabel, page === 'contribute' && styles.tabActive]}>Contribuir</Text>
-            {page === 'contribute' && <View style={styles.tabIndicator} />}
-          </Pressable>
-        </View>
+        {page !== 'login' && (
+          <View style={styles.tabBar}>
+            {[
+              { id: 'home', icon: '⌂', label: 'INÍCIO' },
+              { id: 'explore', icon: '◈', label: 'EXPLORAR' },
+            ].map((item) => {
+              const active = page === item.id || (page === 'song' && item.id === 'home');
+              return (
+                <Pressable key={item.id} onPress={() => setPage(item.id)} style={styles.tabItem} accessibilityRole="button" accessibilityState={{ selected: active }}>
+                  <Text style={[styles.tabIcon, active && styles.tabActive]}>{item.icon}</Text>
+                  <Text style={[styles.tabLabel, active && styles.tabActive]}>{item.label}</Text>
+                  {active && <View style={styles.tabIndicator} />}
+                </Pressable>
+              );
+            })}
+            <Pressable onPress={() => openContribution(selectedSong)} style={styles.tabItem} accessibilityRole="button">
+              <Text style={[styles.tabIcon, page === 'contribute' && styles.tabActive]}>＋</Text>
+              <Text style={[styles.tabLabel, page === 'contribute' && styles.tabActive]}>CONTRIBUIR</Text>
+              {page === 'contribute' && <View style={styles.tabIndicator} />}
+            </Pressable>
+          </View>
+        )}
       </View>
     </GluestackUIProvider>
   );
