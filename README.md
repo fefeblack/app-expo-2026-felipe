@@ -48,3 +48,10 @@ Os dados de músicas são exemplos locais em `data/songs.js`. A busca funciona a
 ## Direitos autorais
 
 Não armazenar ou publicar letras completas protegidas sem autorização. Priorizar informações factuais, análises próprias, resumos e referências externas.
+
+
+## Personalização visual
+
+- `styles.js`: cores, tipografia, dimensões e espaçamentos do tema.
+- `pages/Home.js`: composição da tela inicial e hero principal.
+- `components/SonoraHud.js`: ponto reservado para inserir manualmente o HUD animado sobre a arte hero.
