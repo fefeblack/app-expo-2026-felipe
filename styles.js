@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  app: { flex: 1, backgroundColor: '#08090B' },\n  searchStatus: { color: '#26C3C9', fontSize: 8, letterSpacing: 1.4, marginHorizontal: 23, marginTop: -24, marginBottom: 24 },\n  searchError: { color: '#D9A59A', fontSize: 10, lineHeight: 15, marginHorizontal: 23, marginTop: -22, marginBottom: 24 },
+  app: { flex: 1, backgroundColor: '#08090B' },
+  searchStatus: { color: '#26C3C9', fontSize: 8, letterSpacing: 1.4, marginHorizontal: 23, marginTop: -24, marginBottom: 24 },
+  searchError: { color: '#D9A59A', fontSize: 10, lineHeight: 15, marginHorizontal: 23, marginTop: -22, marginBottom: 24 },
   content: { flex: 1 },
   page: { paddingHorizontal: 22, paddingTop: 22, paddingBottom: 34, backgroundColor: '#08090B' },
   homePage: { paddingHorizontal: 0, paddingTop: 0, paddingBottom: 34, backgroundColor: '#08090B' },
