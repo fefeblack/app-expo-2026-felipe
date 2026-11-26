@@ -27,7 +27,7 @@ export function signUp(email, password) {
   return authRequest('signup', email, password);
 }
 
-export async function createContribution({ contribution, source, section, song, accessToken }) {
+export async function createContribution({ contribution, source, section, song, accessToken, userId }) {
   if (!isSupabaseConfigured) configError();
   const response = await fetch(`${SUPABASE_URL}/rest/v1/contributions`, {
     method: 'POST',
@@ -38,7 +38,7 @@ export async function createContribution({ contribution, source, section, song, 
       Prefer: 'return=minimal'
     },
     body: JSON.stringify({
-      song_title: song?.title || 'Artigo geral',
+      user_id: userId,\n      song_title: song?.title || 'Artigo geral',
       song_artist: song?.artist || null,
       section,
       content: contribution.trim(),
