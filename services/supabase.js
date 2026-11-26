@@ -38,7 +38,8 @@ export async function createContribution({ contribution, source, section, song, 
       Prefer: 'return=minimal'
     },
     body: JSON.stringify({
-      user_id: userId,\n      song_title: song?.title || 'Artigo geral',
+      user_id: userId,
+      song_title: song?.title || 'Artigo geral',
       song_artist: song?.artist || null,
       section,
       content: contribution.trim(),
