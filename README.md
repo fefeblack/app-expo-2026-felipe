@@ -1,57 +1,81 @@
 # SONORA
 
-Enciclopédia musical colaborativa construída com Expo e React Native.
+Enciclopédia musical colaborativa construída com Expo e React Native. O projeto está em desenvolvimento para entrega escolar em 30/11/2026.
 
-## Objetivo
+## O que já existe nesta versão
 
-O SONORA pretende reunir artigos sobre músicas, artistas, álbuns e gêneros musicais. A comunidade poderá ampliar os artigos com informações verificáveis, fontes, contexto histórico, análises e correções.
+- Home editorial SONORA e navegação inferior.
+- Busca local e busca de catálogo musical externo.
+- Resultados com título, artista, álbum, ano, gênero e capa quando disponível.
+- Página de artigo musical e áreas de contexto/interpretação.
+- Tela de login e cadastro.
+- Formulário de contribuição com seção e referência.
+- Esquema inicial Supabase com Row Level Security (RLS).
+- Componente reservado para HUD personalizado.
 
-## Tecnologias atuais
+## API musical gratuita
 
-- Expo
-- React Native
-- JavaScript
-- Gluestack UI
-- NativeWind
+A busca usa a **iTunes Search API** (Apple), sem chave de API:
+- Serviço: `services/musicApi.js`
+- Endpoint: `https://itunes.apple.com/search`
+- A busca é feita para catálogo de música no Brasil; pode retornar capa, dados básicos e link/prévia quando disponíveis.
+- As prévias e imagens devem respeitar os termos da Apple. Não use o serviço para baixar ou redistribuir áudio.
 
-## Executar localmente
+O aplicativo continua exibindo dados locais de demonstração em `data/songs.js` quando a busca não tem termo ou não encontra resultados.
 
-```bash
-npm install
-npx expo start
-```
+## Configuração local
 
-Para abrir no navegador:
+1. Instale Node.js LTS e Git.
+2. Clone o repositório e entre na pasta:
+   ```bash
+   git clone https://github.com/fefeblack/app-expo-2026-felipe.git
+   cd app-expo-2026-felipe
+   git checkout feat/sonora-foundation
+   npm install
+   ```
+3. Inicie o Expo:
+   ```bash
+   npx expo start
+   ```
+4. Para web:
+   ```bash
+   npx expo start --web
+   ```
 
-```bash
-npx expo start --web
-```
+## Ativar login e contribuições com Supabase
 
-## Estado desta versão
+1. Crie um projeto gratuito em https://supabase.com.
+2. No painel, abra **SQL Editor** e execute o conteúdo de `supabase/schema.sql`.
+3. Copie `.env.example` para um arquivo local chamado `.env`.
+4. No painel Supabase, copie Project URL e a chave pública **anon/publishable** para:
+   ```env
+   EXPO_PUBLIC_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+   EXPO_PUBLIC_SUPABASE_ANON_KEY=SUA_CHAVE_PUBLICA
+   ```
+5. Reinicie o Expo com cache limpo:
+   ```bash
+   npx expo start -c
+   ```
 
-A interface inicial apresenta:
-- página inicial com busca local por músicas, artistas e álbuns;
-- área de exploração por gêneros;
-- página de artigo musical;
-- formulário demonstrativo de contribuição.
+A autenticação REST e o envio de contribuições estão implementados em `services/supabase.js`. O cadastro pode exigir confirmação por e-mail, conforme as configurações de Authentication do projeto Supabase.
 
-Os dados de músicas são exemplos locais em `data/songs.js`. A busca funciona apenas sobre esses dados. O formulário de contribuição ainda não envia nem persiste informações.
+**Segurança:** nunca coloque a chave `service_role`/secret no aplicativo. Não envie seu `.env` ao GitHub. A chave pública do cliente só deve ser usada com RLS habilitado e políticas restritas como as do esquema fornecido.
 
-## Próximas etapas
+## Personalizar o visual e o HUD
 
-1. Definir o modelo de dados para músicas, artistas, álbuns, fontes e revisões.
-2. Configurar Supabase e variáveis de ambiente.
-3. Implementar cadastro, login e perfis.
-4. Salvar contribuições e manter histórico de versões.
-5. Criar regras de moderação e segurança com Row Level Security.
+- `styles.js`: paleta, tipografia, espaçamentos e estilos.
+- `pages/Home.js`: composição da página inicial e hero.
+- `components/SonoraHud.js`: ponto reservado para você adicionar manualmente o HUD animado. A camada cobre a hero; elementos decorativos devem usar `pointerEvents="none"` para não bloquear controles.
+
+## Limitações desta entrega
+
+- O catálogo é fornecido por uma API externa gratuita e pode ter cobertura variável.
+- Os artigos de exemplo são conteúdo demonstrativo; precisam ser ampliados e referenciados.
+- O envio de contribuições depende de configurar Supabase e executar o SQL.
+- O estado de login é mantido em memória nesta versão; ao fechar o app, o usuário pode precisar entrar novamente.
+- A fila de revisão está no banco, mas ainda não existe painel administrativo de moderação nem histórico completo de revisões.
+- Não publicamos letras completas protegidas por direitos autorais; priorizamos contexto, análise própria e links para fontes autorizadas.
 
 ## Direitos autorais
 
 Não armazenar ou publicar letras completas protegidas sem autorização. Priorizar informações factuais, análises próprias, resumos e referências externas.
-
-
-## Personalização visual
-
-- `styles.js`: cores, tipografia, dimensões e espaçamentos do tema.
-- `pages/Home.js`: composição da tela inicial e hero principal.
-- `components/SonoraHud.js`: ponto reservado para inserir manualmente o HUD animado sobre a arte hero.
